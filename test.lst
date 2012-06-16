@@ -478,8 +478,8 @@ test.dasm (line 382): [0x05C7]               text_color:
 test.dasm (line 383): [0x05C7]                 .dat 0xF000
 test.dasm (line 383): [0x05C7]                      F000
 test.dasm (line 384): [0x05C8]               default_palette:
-test.dasm (line 385): [0x05C8]                 .dat 0x000,0x00A,0x0A0,0x0AA,0xA00,0xA0A,0xAA0,0xAAA,0x555,0x55F,0x5F5,0x5FF,0xF55,0xF5F,0xFF5,0xFFF
-test.dasm (line 385): [0x05C8]                      0000 000A 00A0 00AA 0A00 0A0A 0AA0 0AAA
+test.dasm (line 385): [0x05C8]                 .dat 0x000,0x00A,0x0A0,0x0AA,0xA00,0xA0A,0xA50,0xAAA,0x555,0x55F,0x5F5,0x5FF,0xF55,0xF5F,0xFF5,0xFFF
+test.dasm (line 385): [0x05C8]                      0000 000A 00A0 00AA 0A00 0A0A 0A50 0AAA
 test.dasm (line 385): [0x05D0]                      0555 055F 05F5 05FF 0F55 0F5F 0FF5 0FFF
 test.dasm (line 386): [0x05D8]               actual_palette:
 test.dasm (line 387): [0x05D8]                 .reserve 0xF
