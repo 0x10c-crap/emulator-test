@@ -14,7 +14,41 @@
     JSR waitkey
     JSR clear_screen
     
-    ; LEM 1802 TESTS
+    ; LEM 1802 TEST    
+lem1802_dump_font_test:             ; LEM1802 Font Dump Test
+    JSR clear_screen
+    JSR write_lem1802_header
+    SET A, 0
+    SET B, 2
+    SET C, lem1802_dump_font_text
+    JSR prints
+    
+    SET A, 4
+    SET B, actual_font
+    HWI [screen_index] ; dump font
+    SET A, default_font
+    SET B, actual_font
+    SET C, 0xF
+    JSR compare_memory
+    ADD J, 1
+    
+lem1802_dump_palette_test:          ; LEM1802 Palette Dump Test
+    JSR clear_screen
+    JSR write_lem1802_header
+    SET A, 0
+    SET B, 2
+    SET C, lem1802_dump_palette_text
+    JSR prints
+    
+    SET A, 5
+    SET B, actual_palette
+    HWI [screen_index] ; dump palette
+    SET A, default_palette
+    SET B, actual_palette
+    SET C, 0xF
+    JSR compare_memory
+    ADD J, 1
+    
 lem1802_border:                 ; LEM1802 Border Test
     JSR write_lem1802_header
     SET A, 0
@@ -50,40 +84,6 @@ lem1802_border:                 ; LEM1802 Border Test
     SET A, 3
     SET B, 0
     HWI [screen_index]
-    ADD J, 1
-    
-lem1802_dump_font_test:             ; LEM1802 Font Dump Test
-    JSR clear_screen
-    JSR write_lem1802_header
-    SET A, 0
-    SET B, 2
-    SET C, lem1802_dump_font_text
-    JSR prints
-    
-    SET A, 4
-    SET B, actual_font
-    HWI [screen_index] ; dump font
-    SET A, default_font
-    SET B, actual_font
-    SET C, 0xF
-    JSR compare_memory
-    ADD J, 1
-    
-lem1802_dump_palette_test:          ; LEM1802 Palette Dump Test
-    JSR clear_screen
-    JSR write_lem1802_header
-    SET A, 0
-    SET B, 2
-    SET C, lem1802_dump_palette_text
-    JSR prints
-    
-    SET A, 5
-    SET B, actual_palette
-    HWI [screen_index] ; dump palette
-    SET A, default_palette
-    SET B, actual_palette
-    SET C, 0xF
-    JSR compare_memory
     ADD J, 1
     
 lem1802_map_font_test:              ; LEM1802 Font Mapping Test
