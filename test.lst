@@ -1,592 +1,592 @@
-test.dasm (line 3):   [0x0000] 7C20 03E0       JSR init_devices
-test.dasm (line 5):   [0x0002] 83D2 05C4       IFE [keyboard_index], -1
-test.dasm (line 6):   [0x0004] 7F81 00D6       SET PC, nokeyboard
+test.dasm (line 3):   [0x0000] 7C20 03E1       JSR init_devices
+test.dasm (line 5):   [0x0002] 83D2 05C5       IFE [keyboard_index], -1
+test.dasm (line 6):   [0x0004] 7F81 00D7       SET PC, nokeyboard
 test.dasm (line 8):   [0x0006] 84E1            SET J, 0
 test.dasm (line 10):  [0x0007] 8401            SET A, 0
 test.dasm (line 11):  [0x0008] 8421            SET B, 0
-test.dasm (line 12):  [0x0009] 7C41 00FF       SET C, startup_text
-test.dasm (line 13):  [0x000B] 7C20 040B       JSR prints
-test.dasm (line 14):  [0x000D] 7C20 0424       JSR waitkey
-test.dasm (line 15):  [0x000F] 7C20 042B       JSR clear_screen
-test.dasm (line 18):  [0x0011]               lem1802_border:
-test.dasm (line 19):  [0x0011] 7C20 00DD       JSR write_lem1802_header
-test.dasm (line 20):  [0x0013] 8401            SET A, 0
-test.dasm (line 21):  [0x0014] 8821            SET B, 1
-test.dasm (line 22):  [0x0015] 7C41 0195       SET C, lem1802_border_text
-test.dasm (line 23):  [0x0017] 7C20 040B       JSR prints
-test.dasm (line 25):  [0x0019] 84C1            SET I, 0
-test.dasm (line 26):  [0x001A]               .loop:
-test.dasm (line 27):  [0x001A] 9001            SET A, 3
-test.dasm (line 28):  [0x001B] 1821            SET B, I
-test.dasm (line 29):  [0x001C] 7A40 05C5       HWI [screen_index]
-test.dasm (line 31):  [0x001E] 8401            SET A, 0
-test.dasm (line 32):  [0x001F] 9821            SET B, 5
-test.dasm (line 33):  [0x0020] 1841            SET C, I
-test.dasm (line 34):  [0x0021] A444            MUL C, 8
-test.dasm (line 35):  [0x0022] 7C42 02E3       ADD C, colors
-test.dasm (line 36):  [0x0024] 7C20 040B       JSR prints
-test.dasm (line 37):  [0x0026]               .keyloop:
-test.dasm (line 38):  [0x0026] 7C20 0424       JSR waitkey
-test.dasm (line 39):  [0x0028] 7C52 0079       IFE C, 'y'
-test.dasm (line 40):  [0x002A] 7F81 0034       SET PC, .iterate
-test.dasm (line 41):  [0x002C] 7C52 006E       IFE C, 'n'
-test.dasm (line 42):  [0x002E] 7F81 0032       SET PC, .fail
-test.dasm (line 43):  [0x0030] 7F81 0026       SET PC, .keyloop
-test.dasm (line 44):  [0x0032]               .fail:
-test.dasm (line 45):  [0x0032] 86E1 0363       SET [J + test_results], 0
-test.dasm (line 46):  [0x0034]               .iterate:
-test.dasm (line 47):  [0x0034] 88C2            ADD I, 1
-test.dasm (line 48):  [0x0035] C4D3            IFN I, 16
-test.dasm (line 49):  [0x0036] EF81            SET PC, .loop
-test.dasm (line 50):  [0x0037] 9001            SET A, 3
-test.dasm (line 51):  [0x0038] 8421            SET B, 0
-test.dasm (line 52):  [0x0039] 7A40 05C5       HWI [screen_index]
-test.dasm (line 53):  [0x003B] 88E2            ADD J, 1
-test.dasm (line 55):  [0x003C]               lem1802_dump_font_test:
-test.dasm (line 56):  [0x003C] 7C20 042B       JSR clear_screen
-test.dasm (line 57):  [0x003E] 7C20 00DD       JSR write_lem1802_header
-test.dasm (line 58):  [0x0040] 8401            SET A, 0
-test.dasm (line 59):  [0x0041] 8C21            SET B, 2
-test.dasm (line 60):  [0x0042] 7C41 020C       SET C, lem1802_dump_font_text
-test.dasm (line 61):  [0x0044] 7C20 040B       JSR prints
-test.dasm (line 63):  [0x0046] 9401            SET A, 4
-test.dasm (line 64):  [0x0047] 7C21 06E7       SET B, actual_font
-test.dasm (line 65):  [0x0049] 7A40 05C5       HWI [screen_index]
-test.dasm (line 66):  [0x004B] 7C01 05E7       SET A, default_font
-test.dasm (line 67):  [0x004D] 7C21 06E7       SET B, actual_font
-test.dasm (line 68):  [0x004F] C041            SET C, 0xF
-test.dasm (line 69):  [0x0050] 7C20 00E4       JSR compare_memory
-test.dasm (line 70):  [0x0052] 88E2            ADD J, 1
-test.dasm (line 72):  [0x0053]               lem1802_dump_palette_test:
-test.dasm (line 73):  [0x0053] 7C20 042B       JSR clear_screen
-test.dasm (line 74):  [0x0055] 7C20 00DD       JSR write_lem1802_header
-test.dasm (line 75):  [0x0057] 8401            SET A, 0
-test.dasm (line 76):  [0x0058] 8C21            SET B, 2
-test.dasm (line 77):  [0x0059] 7C41 01E6       SET C, lem1802_dump_palette_text
-test.dasm (line 78):  [0x005B] 7C20 040B       JSR prints
-test.dasm (line 80):  [0x005D] 9801            SET A, 5
-test.dasm (line 81):  [0x005E] 7C21 05D8       SET B, actual_palette
-test.dasm (line 82):  [0x0060] 7A40 05C5       HWI [screen_index]
-test.dasm (line 83):  [0x0062] 7C01 05C8       SET A, default_palette
-test.dasm (line 84):  [0x0064] 7C21 05D8       SET B, actual_palette
-test.dasm (line 85):  [0x0066] C041            SET C, 0xF
-test.dasm (line 86):  [0x0067] 7C20 00E4       JSR compare_memory
-test.dasm (line 87):  [0x0069] 88E2            ADD J, 1
-test.dasm (line 89):  [0x006A]               lem1802_map_font_test:
-test.dasm (line 90):  [0x006A] 7C20 042B       JSR clear_screen
-test.dasm (line 91):  [0x006C] 7C20 00DD       JSR write_lem1802_header
-test.dasm (line 92):  [0x006E] 8401            SET A, 0
-test.dasm (line 93):  [0x006F] 8821            SET B, 1
-test.dasm (line 94):  [0x0070] 7C41 022F       SET C, lem1802_map_font_text
-test.dasm (line 95):  [0x0072] 7C20 040B       JSR prints
-test.dasm (line 97):  [0x0074] 7BC1 08E7 063B  SET [default_font + ('*' * 2)], [test_character]
-test.dasm (line 98):  [0x0077] 7BC1 08E8 063C  SET [default_font + ('*' * 2) + 1], [test_character + 1]
-test.dasm (line 100): [0x007A] 8801            SET A, 1
-test.dasm (line 101): [0x007B] 7C21 05E7       SET B, default_font
-test.dasm (line 102): [0x007D] 7A40 05C5       HWI [screen_index]
-test.dasm (line 104): [0x007F] 7FC1 F02A 0504  SET [screen_buffer + (32 * 6)], '*' | 0xF000
-test.dasm (line 106): [0x0082] 7C20 00F1       JSR determine_success_y_n
-test.dasm (line 109): [0x0084] 8801            SET A, 1
-test.dasm (line 110): [0x0085] 8421            SET B, 0
-test.dasm (line 111): [0x0086] 7A40 05C5       HWI [screen_index]
-test.dasm (line 113): [0x0088] 88E2            ADD J, 1
-test.dasm (line 115): [0x0089]               lem1802_map_palette_test:
-test.dasm (line 116): [0x0089] 7C20 042B       JSR clear_screen
-test.dasm (line 117): [0x008B] 7C20 00DD       JSR write_lem1802_header
-test.dasm (line 118): [0x008D] 8401            SET A, 0
-test.dasm (line 119): [0x008E] 8821            SET B, 1
-test.dasm (line 120): [0x008F] 7C41 027E       SET C, lem1802_map_palette_text
-test.dasm (line 121): [0x0091] 7C20 040B       JSR prints
-test.dasm (line 123): [0x0093] 7FC1 0F00 05C9  SET [default_palette + 1], 0xF00
-test.dasm (line 125): [0x0096] 8C01            SET A, 2
-test.dasm (line 126): [0x0097] 7C21 05C8       SET B, default_palette
-test.dasm (line 127): [0x0099] 7A40 05C5       HWI [screen_index]
-test.dasm (line 129): [0x009B] 8401            SET A, 0
-test.dasm (line 130): [0x009C] 9C21            SET B, 6
-test.dasm (line 131): [0x009D] 7C41 02C7       SET C, lem1802_map_palette_test_text
-test.dasm (line 132): [0x009F] 7FC1 1000 05C7  SET [text_color], 0x1000
-test.dasm (line 133): [0x00A2] 7C20 040B       JSR prints
-test.dasm (line 134): [0x00A4] 7FC1 F000 05C7  SET [text_color], 0xF000
-test.dasm (line 136): [0x00A7] 7C20 00F1       JSR determine_success_y_n
-test.dasm (line 138): [0x00A9] 8801            SET A, 1
-test.dasm (line 139): [0x00AA] 8421            SET B, 0
-test.dasm (line 140): [0x00AB] 7A40 05C5       HWI [screen_index]
-test.dasm (line 142): [0x00AD] 88E2            ADD J, 1
-test.dasm (line 145): [0x00AE]               show_results:
-test.dasm (line 146): [0x00AE] 7C20 042B       JSR clear_screen
-test.dasm (line 147): [0x00B0] 84E1            SET J, 0
-test.dasm (line 148): [0x00B1]               .show_page:
-test.dasm (line 149): [0x00B1] 8401            SET A, 0
-test.dasm (line 150): [0x00B2] 8421            SET B, 0
-test.dasm (line 151): [0x00B3] 7C41 02D5       SET C, results_text
-test.dasm (line 152): [0x00B5] 7C20 040B       JSR prints
-test.dasm (line 153): [0x00B7]               .loop:
-test.dasm (line 155): [0x00B7] 8401            SET A, 0
-test.dasm (line 156): [0x00B8] 1C21            SET B, J
-test.dasm (line 157): [0x00B9] 8822            ADD B, 1
-test.dasm (line 158): [0x00BA] 1C41            SET C, J
-test.dasm (line 159): [0x00BB] DC44            MUL C, test_name_length
-test.dasm (line 160): [0x00BC] 7C42 0368       ADD C, test_names
-test.dasm (line 161): [0x00BE] 7C20 040B       JSR prints
-test.dasm (line 163): [0x00C0] 0401            SET A, B
-test.dasm (line 164): [0x00C1] 7C26 0020       DIV B, 32
-test.dasm (line 165): [0x00C3] 7C08 0020       MOD A, 32
-test.dasm (line 166): [0x00C5] 1C41            SET C, J
-test.dasm (line 167): [0x00C6] 7C42 0363       ADD C, test_results
-test.dasm (line 168): [0x00C8] 2841            SET C, [C]
-test.dasm (line 169): [0x00C9] 9844            MUL C, 5
-test.dasm (line 170): [0x00CA] 7C42 03D6       ADD C, test_success_text
-test.dasm (line 171): [0x00CC] 7C20 040B       JSR prints
-test.dasm (line 173): [0x00CE] 88E2            ADD J, 1
-test.dasm (line 174): [0x00CF] 98F2            IFE J, test_results_end - test_results
-test.dasm (line 175): [0x00D0] 7F81 00D5       SET PC, .keyloop
-test.dasm (line 176): [0x00D2] ACF3            IFN J, 10
-test.dasm (line 177): [0x00D3] 7F81 00B7       SET PC, .loop
-test.dasm (line 178): [0x00D5]               .keyloop:
-test.dasm (line 179): [0x00D5] 8B83            SUB PC, 1
-test.dasm (line 181): [0x00D6]               nokeyboard:
-test.dasm (line 182): [0x00D6] 8401            SET A, 0
-test.dasm (line 183): [0x00D7] 8421            SET B, 0
-test.dasm (line 184): [0x00D8] 7C41 0128       SET C, nokeyboard_text
-test.dasm (line 185): [0x00DA] 7C20 040B       JSR prints
-test.dasm (line 186): [0x00DC] 8B83            SUB PC, 1
-test.dasm (line 188): [0x00DD]               write_lem1802_header:
-test.dasm (line 189): [0x00DD] 8401            SET A, 0
-test.dasm (line 190): [0x00DE] 8421            SET B, 0
-test.dasm (line 191): [0x00DF] 7C41 0174       SET C, lem1802_text
-test.dasm (line 192): [0x00E1] 7C20 040B       JSR prints
-test.dasm (line 193): [0x00E3] 6381            SET PC, POP
-test.dasm (line 196): [0x00E4]               compare_memory:
-test.dasm (line 197): [0x00E4] 2513            IFN [A], [B]
-test.dasm (line 198): [0x00E5] 7F81 00EE       SET PC, .fail
-test.dasm (line 199): [0x00E7] 8452            IFE C, 0
-test.dasm (line 200): [0x00E8] 6381            SET PC, POP
-test.dasm (line 201): [0x00E9] 8802            ADD A, 1
-test.dasm (line 202): [0x00EA] 8822            ADD B, 1
-test.dasm (line 203): [0x00EB] 8843            SUB C, 1
-test.dasm (line 204): [0x00EC] 7F81 00E4       SET PC, compare_memory
-test.dasm (line 205): [0x00EE]               .fail:
-test.dasm (line 206): [0x00EE] 86E1 0363       SET [test_results + J], 0
-test.dasm (line 207): [0x00F0] 6381            SET PC, POP
-test.dasm (line 209): [0x00F1]               determine_success_y_n:
-test.dasm (line 210): [0x00F1] 7C20 0424       JSR waitkey
-test.dasm (line 211): [0x00F3] 7C52 006E       IFE C, 'n'
-test.dasm (line 212): [0x00F5] 7F81 00FC       SET PC, .fail
-test.dasm (line 213): [0x00F7] 7C53 0079       IFN C, 'y'
-test.dasm (line 214): [0x00F9] 7F81 00F1       SET PC, determine_success_y_n
-test.dasm (line 215): [0x00FB] 6381            SET PC, POP
-test.dasm (line 216): [0x00FC]               .fail:
-test.dasm (line 217): [0x00FC] 86E1 0363       SET [test_results + J], 0
-test.dasm (line 218): [0x00FE] 6381            SET PC, POP
-test.dasm (line 221): [0x00FF]               startup_text:
-test.dasm (line 222): [0x00FF]                 .dat "DCPU Emulator Test\nPress a key to begin.", 0
-test.dasm (line 222): [0x00FF]                      0044 0043 0050 0055 0020 0045 006D 0075
-test.dasm (line 222): [0x0107]                      006C 0061 0074 006F 0072 0020 0054 0065
-test.dasm (line 222): [0x010F]                      0073 0074 000A 0050 0072 0065 0073 0073
-test.dasm (line 222): [0x0117]                      0020 0061 0020 006B 0065 0079 0020 0074
-test.dasm (line 222): [0x011F]                      006F 0020 0062 0065 0067 0069 006E 002E
-test.dasm (line 222): [0x0127]                      0000
-test.dasm (line 223): [0x0128]               nokeyboard_text:
-test.dasm (line 224): [0x0128]                 .dat "ERROR:\nNo keyboard detected.\nPlease plug in Generic Keyboard\nID: 0x30cf7406", 0
-test.dasm (line 224): [0x0128]                      0045 0052 0052 004F 0052 003A 000A 004E
-test.dasm (line 224): [0x0130]                      006F 0020 006B 0065 0079 0062 006F 0061
-test.dasm (line 224): [0x0138]                      0072 0064 0020 0064 0065 0074 0065 0063
-test.dasm (line 224): [0x0140]                      0074 0065 0064 002E 000A 0050 006C 0065
-test.dasm (line 224): [0x0148]                      0061 0073 0065 0020 0070 006C 0075 0067
-test.dasm (line 224): [0x0150]                      0020 0069 006E 0020 0047 0065 006E 0065
-test.dasm (line 224): [0x0158]                      0072 0069 0063 0020 004B 0065 0079 0062
-test.dasm (line 224): [0x0160]                      006F 0061 0072 0064 000A 0049 0044 003A
-test.dasm (line 224): [0x0168]                      0020 0030 0078 0033 0030 0063 0066 0037
-test.dasm (line 224): [0x0170]                      0034 0030 0036 0000
-test.dasm (line 225): [0x0174]               lem1802_text:
-test.dasm (line 226): [0x0174]                 .dat "=========LEM 1802 Tests=========", 0
-test.dasm (line 226): [0x0174]                      003D 003D 003D 003D 003D 003D 003D 003D
-test.dasm (line 226): [0x017C]                      003D 004C 0045 004D 0020 0031 0038 0030
-test.dasm (line 226): [0x0184]                      0032 0020 0054 0065 0073 0074 0073 003D
-test.dasm (line 226): [0x018C]                      003D 003D 003D 003D 003D 003D 003D 003D
-test.dasm (line 226): [0x0194]                      0000
-test.dasm (line 227): [0x0195]               lem1802_border_text:
-test.dasm (line 228): [0x0195]                 .dat "Screen Border Test\nPress Y if the color shown is\naccurate. Press N if it is not.", 0
-test.dasm (line 228): [0x0195]                      0053 0063 0072 0065 0065 006E 0020 0042
-test.dasm (line 228): [0x019D]                      006F 0072 0064 0065 0072 0020 0054 0065
-test.dasm (line 228): [0x01A5]                      0073 0074 000A 0050 0072 0065 0073 0073
-test.dasm (line 228): [0x01AD]                      0020 0059 0020 0069 0066 0020 0074 0068
-test.dasm (line 228): [0x01B5]                      0065 0020 0063 006F 006C 006F 0072 0020
-test.dasm (line 228): [0x01BD]                      0073 0068 006F 0077 006E 0020 0069 0073
-test.dasm (line 228): [0x01C5]                      000A 0061 0063 0063 0075 0072 0061 0074
-test.dasm (line 228): [0x01CD]                      0065 002E 0020 0050 0072 0065 0073 0073
-test.dasm (line 228): [0x01D5]                      0020 004E 0020 0069 0066 0020 0069 0074
-test.dasm (line 228): [0x01DD]                      0020 0069 0073 0020 006E 006F 0074 002E
-test.dasm (line 228): [0x01E5]                      0000
-test.dasm (line 229): [0x01E6]               lem1802_dump_palette_text:
-test.dasm (line 230): [0x01E6]                 .dat "Testing default palette.\nPlease wait.", 0
-test.dasm (line 230): [0x01E6]                      0054 0065 0073 0074 0069 006E 0067 0020
-test.dasm (line 230): [0x01EE]                      0064 0065 0066 0061 0075 006C 0074 0020
-test.dasm (line 230): [0x01F6]                      0070 0061 006C 0065 0074 0074 0065 002E
-test.dasm (line 230): [0x01FE]                      000A 0050 006C 0065 0061 0073 0065 0020
-test.dasm (line 230): [0x0206]                      0077 0061 0069 0074 002E 0000
-test.dasm (line 231): [0x020C]               lem1802_dump_font_text:
-test.dasm (line 232): [0x020C]                 .dat "Testing default font.\nPlease wait.", 0
-test.dasm (line 232): [0x020C]                      0054 0065 0073 0074 0069 006E 0067 0020
-test.dasm (line 232): [0x0214]                      0064 0065 0066 0061 0075 006C 0074 0020
-test.dasm (line 232): [0x021C]                      0066 006F 006E 0074 002E 000A 0050 006C
-test.dasm (line 232): [0x0224]                      0065 0061 0073 0065 0020 0077 0061 0069
-test.dasm (line 232): [0x022C]                      0074 002E 0000
-test.dasm (line 233): [0x022F]               lem1802_map_font_text:
-test.dasm (line 234): [0x022F]                 .dat "Font Map Test\nPress Y if a small cross is\nvisible below. Press N if it is not.", 0
-test.dasm (line 234): [0x022F]                      0046 006F 006E 0074 0020 004D 0061 0070
-test.dasm (line 234): [0x0237]                      0020 0054 0065 0073 0074 000A 0050 0072
-test.dasm (line 234): [0x023F]                      0065 0073 0073 0020 0059 0020 0069 0066
-test.dasm (line 234): [0x0247]                      0020 0061 0020 0073 006D 0061 006C 006C
-test.dasm (line 234): [0x024F]                      0020 0063 0072 006F 0073 0073 0020 0069
-test.dasm (line 234): [0x0257]                      0073 000A 0076 0069 0073 0069 0062 006C
-test.dasm (line 234): [0x025F]                      0065 0020 0062 0065 006C 006F 0077 002E
-test.dasm (line 234): [0x0267]                      0020 0050 0072 0065 0073 0073 0020 004E
-test.dasm (line 234): [0x026F]                      0020 0069 0066 0020 0069 0074 0020 0069
-test.dasm (line 234): [0x0277]                      0073 0020 006E 006F 0074 002E 0000
-test.dasm (line 235): [0x027E]               lem1802_map_palette_text:
-test.dasm (line 236): [0x027E]                 .dat "Palette Map Test\nPress Y if the text below is\nred. Press N if it is not.", 0
-test.dasm (line 236): [0x027E]                      0050 0061 006C 0065 0074 0074 0065 0020
-test.dasm (line 236): [0x0286]                      004D 0061 0070 0020 0054 0065 0073 0074
-test.dasm (line 236): [0x028E]                      000A 0050 0072 0065 0073 0073 0020 0059
-test.dasm (line 236): [0x0296]                      0020 0069 0066 0020 0074 0068 0065 0020
-test.dasm (line 236): [0x029E]                      0074 0065 0078 0074 0020 0062 0065 006C
-test.dasm (line 236): [0x02A6]                      006F 0077 0020 0069 0073 000A 0072 0065
-test.dasm (line 236): [0x02AE]                      0064 002E 0020 0050 0072 0065 0073 0073
-test.dasm (line 236): [0x02B6]                      0020 004E 0020 0069 0066 0020 0069 0074
-test.dasm (line 236): [0x02BE]                      0020 0069 0073 0020 006E 006F 0074 002E
-test.dasm (line 236): [0x02C6]                      0000
-test.dasm (line 237): [0x02C7]               lem1802_map_palette_test_text:
-test.dasm (line 238): [0x02C7]                 .dat "Hello, world!", 0
-test.dasm (line 238): [0x02C7]                      0048 0065 006C 006C 006F 002C 0020 0077
-test.dasm (line 238): [0x02CF]                      006F 0072 006C 0064 0021 0000
-test.dasm (line 239): [0x02D5]               results_text:
-test.dasm (line 240): [0x02D5]                 .dat "Test Results:", 0
-test.dasm (line 240): [0x02D5]                      0054 0065 0073 0074 0020 0052 0065 0073
-test.dasm (line 240): [0x02DD]                      0075 006C 0074 0073 003A 0000
-test.dasm (line 242): [0x02E3]               colors:
-test.dasm (line 243): [0x02E3]                 .dat "Black  ", 0
-test.dasm (line 243): [0x02E3]                      0042 006C 0061 0063 006B 0020 0020 0000
-test.dasm (line 244): [0x02EB]                 .dat "Blue   ", 0
-test.dasm (line 244): [0x02EB]                      0042 006C 0075 0065 0020 0020 0020 0000
-test.dasm (line 245): [0x02F3]                 .dat "D Green", 0
-test.dasm (line 245): [0x02F3]                      0044 0020 0047 0072 0065 0065 006E 0000
-test.dasm (line 246): [0x02FB]                 .dat "Teal   ", 0
-test.dasm (line 246): [0x02FB]                      0054 0065 0061 006C 0020 0020 0020 0000
-test.dasm (line 247): [0x0303]                 .dat "Red    ", 0
-test.dasm (line 247): [0x0303]                      0052 0065 0064 0020 0020 0020 0020 0000
-test.dasm (line 248): [0x030B]                 .dat "Purple ", 0
-test.dasm (line 248): [0x030B]                      0050 0075 0072 0070 006C 0065 0020 0000
-test.dasm (line 249): [0x0313]                 .dat "Orange ", 0
-test.dasm (line 249): [0x0313]                      004F 0072 0061 006E 0067 0065 0020 0000
-test.dasm (line 250): [0x031B]                 .dat "L Gray ", 0
-test.dasm (line 250): [0x031B]                      004C 0020 0047 0072 0061 0079 0020 0000
-test.dasm (line 251): [0x0323]                 .dat "D Gray ", 0
-test.dasm (line 251): [0x0323]                      0044 0020 0047 0072 0061 0079 0020 0000
-test.dasm (line 252): [0x032B]                 .dat "D Blue ", 0
-test.dasm (line 252): [0x032B]                      0044 0020 0042 006C 0075 0065 0020 0000
-test.dasm (line 253): [0x0333]                 .dat "L Green", 0
-test.dasm (line 253): [0x0333]                      004C 0020 0047 0072 0065 0065 006E 0000
-test.dasm (line 254): [0x033B]                 .dat "L Blue ", 0
-test.dasm (line 254): [0x033B]                      004C 0020 0042 006C 0075 0065 0020 0000
-test.dasm (line 255): [0x0343]                 .dat "Red    ", 0
-test.dasm (line 255): [0x0343]                      0052 0065 0064 0020 0020 0020 0020 0000
-test.dasm (line 256): [0x034B]                 .dat "Pink   ", 0
-test.dasm (line 256): [0x034B]                      0050 0069 006E 006B 0020 0020 0020 0000
-test.dasm (line 257): [0x0353]                 .dat "Yellow ", 0
-test.dasm (line 257): [0x0353]                      0059 0065 006C 006C 006F 0077 0020 0000
-test.dasm (line 258): [0x035B]                 .dat "White  ", 0
-test.dasm (line 258): [0x035B]                      0057 0068 0069 0074 0065 0020 0020 0000
-test.dasm (line 261): [0x0363]               test_results:
-test.dasm (line 262): [0x0363]                 .dat 1, 1, 1, 1, 1
-test.dasm (line 262): [0x0363]                      0001 0001 0001 0001 0001
-test.dasm (line 263): [0x0368]               test_results_end:
-test.dasm (line 264): [0x0368]               test_names:
-test.dasm (line 265): [0x0368]                 .dat "LEM Border:          ", 0
-test.dasm (line 265): [0x0368]                      004C 0045 004D 0020 0042 006F 0072 0064
-test.dasm (line 265): [0x0370]                      0065 0072 003A 0020 0020 0020 0020 0020
-test.dasm (line 265): [0x0378]                      0020 0020 0020 0020 0020 0000
-test.dasm (line 266): [0x037E]               .equ test_name_length $ - test_names
-test.dasm (line 267): [0x037E]                 .dat "LEM Default Font:    ", 0
-test.dasm (line 267): [0x037E]                      004C 0045 004D 0020 0044 0065 0066 0061
-test.dasm (line 267): [0x0386]                      0075 006C 0074 0020 0046 006F 006E 0074
-test.dasm (line 267): [0x038E]                      003A 0020 0020 0020 0020 0000
-test.dasm (line 268): [0x0394]                 .dat "LEM Default Palette: ", 0
-test.dasm (line 268): [0x0394]                      004C 0045 004D 0020 0044 0065 0066 0061
-test.dasm (line 268): [0x039C]                      0075 006C 0074 0020 0050 0061 006C 0065
-test.dasm (line 268): [0x03A4]                      0074 0074 0065 003A 0020 0000
-test.dasm (line 269): [0x03AA]                 .dat "LEM Font Map:        ", 0
-test.dasm (line 269): [0x03AA]                      004C 0045 004D 0020 0046 006F 006E 0074
-test.dasm (line 269): [0x03B2]                      0020 004D 0061 0070 003A 0020 0020 0020
-test.dasm (line 269): [0x03BA]                      0020 0020 0020 0020 0020 0000
-test.dasm (line 270): [0x03C0]                 .dat "LEM Palette Map:     ", 0
-test.dasm (line 270): [0x03C0]                      004C 0045 004D 0020 0050 0061 006C 0065
-test.dasm (line 270): [0x03C8]                      0074 0074 0065 0020 004D 0061 0070 003A
-test.dasm (line 270): [0x03D0]                      0020 0020 0020 0020 0020 0000
-test.dasm (line 271): [0x03D6]               test_names_end:
-test.dasm (line 273): [0x03D6]               test_success_text:
-test.dasm (line 274): [0x03D6]                 .dat "FAIL", 0
-test.dasm (line 274): [0x03D6]                      0046 0041 0049 004C 0000
-test.dasm (line 275): [0x03DB]                 .dat "PASS", 0
-test.dasm (line 275): [0x03DB]                      0050 0041 0053 0053 0000
-test.dasm (line 278): [0x03E0]               init_devices:
-test.dasm (line 280): [0x03E0] 0200            HWN A
-test.dasm (line 281): [0x03E1] 8803            SUB A, 1
-test.dasm (line 283): [0x03E2] 0F01            SET PUSH, X
-test.dasm (line 284): [0x03E3] 1301            SET PUSH, Y
-test.dasm (line 285): [0x03E4] 7C20 03E9       JSR .loop
-test.dasm (line 286): [0x03E6] 6081            SET Y, POP
-test.dasm (line 287): [0x03E7] 6061            SET X, POP
-test.dasm (line 289): [0x03E8] 6381            SET PC, POP
-test.dasm (line 290): [0x03E9]               .loop:
-test.dasm (line 292): [0x03E9] 8012            IFE A, -1
-test.dasm (line 293): [0x03EA] 6381            SET PC, POP
-test.dasm (line 294): [0x03EB] 0301            SET PUSH, A
-test.dasm (line 295): [0x03EC] 0220            HWQ A
-test.dasm (line 296): [0x03ED] 7C12 F615       IFE A, 0xf615
-test.dasm (line 297): [0x03EF] 7C32 7349       IFE B, 0x7349
-test.dasm (line 298): [0x03F1] 7F81 03FD       SET PC, .init_screen
-test.dasm (line 299): [0x03F3] 7C12 7406       IFE A, 0x7406
-test.dasm (line 300): [0x03F5] 7C32 30CF       IFE B, 0x30cf
-test.dasm (line 301): [0x03F7] 7F81 0407       SET PC, .init_keyboard
-test.dasm (line 302): [0x03F9] 6001            SET A, POP
-test.dasm (line 303): [0x03FA]               .finish:
-test.dasm (line 304): [0x03FA] 8803            SUB A, 1
-test.dasm (line 305): [0x03FB] 7F81 03E9       SET PC, .loop
-test.dasm (line 306): [0x03FD]               .init_screen:
-test.dasm (line 307): [0x03FD] 6041            SET C, POP
-test.dasm (line 308): [0x03FE] 0BC1 05C5       SET [screen_index], C
-test.dasm (line 309): [0x0400] 8401            SET A, 0
-test.dasm (line 310): [0x0401] 7C21 0444       SET B, screen_buffer
-test.dasm (line 311): [0x0403] 0A40            HWI C
-test.dasm (line 312): [0x0404] 0801            SET A, C
-test.dasm (line 313): [0x0405] 7F81 03FA       SET PC, .finish
-test.dasm (line 314): [0x0407]               .init_keyboard:
-test.dasm (line 315): [0x0407] 67C1 05C4       SET [keyboard_index], [SP]
-test.dasm (line 316): [0x0409] 7F81 03F9       SET PC, .finish - 1
-test.dasm (line 319): [0x040B]               prints:
-test.dasm (line 320): [0x040B] 7C24 0020       MUL B, 32
-test.dasm (line 321): [0x040D] 0022            ADD B, A
-test.dasm (line 322): [0x040E]               .loop:
-test.dasm (line 323): [0x040E] 2801            SET A, [C]
-test.dasm (line 324): [0x040F] 8412            IFE A, 0
-test.dasm (line 325): [0x0410] 6381            SET PC, POP
-test.dasm (line 326): [0x0411] AC12            IFE A, '\n'
-test.dasm (line 327): [0x0412] 7F81 041C       SET PC, .newline
-test.dasm (line 328): [0x0414] 780B 05C7       BOR A, [text_color]
-test.dasm (line 329): [0x0416] 0221 0444       SET [B + screen_buffer], A
-test.dasm (line 330): [0x0418]               .iterate:
-test.dasm (line 331): [0x0418] 8822            ADD B, 1
-test.dasm (line 332): [0x0419] 8842            ADD C, 1
-test.dasm (line 333): [0x041A] 7F81 040E       SET PC, .loop
-test.dasm (line 334): [0x041C]               .newline:
-test.dasm (line 335): [0x041C] 7C26 0020       DIV B, 32
-test.dasm (line 336): [0x041E] 7C24 0020       MUL B, 32
-test.dasm (line 337): [0x0420] 7C22 001F       ADD B, 31
-test.dasm (line 338): [0x0422] 7F81 0418       SET PC, .iterate
-test.dasm (line 340): [0x0424]               waitkey:
-test.dasm (line 341): [0x0424] 8801            SET A, 1
-test.dasm (line 342): [0x0425] 7A40 05C4       HWI [keyboard_index]
-test.dasm (line 343): [0x0427] 8452            IFE C, 0
-test.dasm (line 344): [0x0428] 7F81 0425       SET PC, waitkey + 1
-test.dasm (line 345): [0x042A] 6381            SET PC, POP
-test.dasm (line 347): [0x042B]               clear_screen:
-test.dasm (line 348): [0x042B] 6C01            SET A, SP
-test.dasm (line 349): [0x042C] 7F61 05C4       SET SP, screen_buffer_end
-test.dasm (line 350): [0x042E]               .loop:
-test.dasm (line 351): [0x042E] 8701            SET PUSH, 0
-test.dasm (line 352): [0x042F] 8701            SET PUSH, 0
-test.dasm (line 353): [0x0430] 8701            SET PUSH, 0
-test.dasm (line 354): [0x0431] 8701            SET PUSH, 0
-test.dasm (line 355): [0x0432] 8701            SET PUSH, 0
-test.dasm (line 356): [0x0433] 8701            SET PUSH, 0
-test.dasm (line 357): [0x0434] 8701            SET PUSH, 0
-test.dasm (line 358): [0x0435] 8701            SET PUSH, 0
-test.dasm (line 359): [0x0436] 8701            SET PUSH, 0
-test.dasm (line 360): [0x0437] 8701            SET PUSH, 0
-test.dasm (line 361): [0x0438] 8701            SET PUSH, 0
-test.dasm (line 362): [0x0439] 8701            SET PUSH, 0
-test.dasm (line 363): [0x043A] 8701            SET PUSH, 0
-test.dasm (line 364): [0x043B] 8701            SET PUSH, 0
-test.dasm (line 365): [0x043C] 8701            SET PUSH, 0
-test.dasm (line 366): [0x043D] 8701            SET PUSH, 0
-test.dasm (line 367): [0x043E] 6FF3 0444       IFN screen_buffer, SP
-test.dasm (line 368): [0x0440] 7F81 042E       SET PC, .loop
-test.dasm (line 369): [0x0442] 0361            SET SP, A
-test.dasm (line 370): [0x0443] 6381            SET PC, POP
-test.dasm (line 373): [0x0444]               screen_buffer:
-test.dasm (line 374): [0x0444]                 .reserve 32 * 12
-test.dasm (line 374): [0x0444]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x044C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0454]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x045C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0464]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x046C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0474]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x047C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0484]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x048C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0494]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x049C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04A4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04AC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04B4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04BC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04C4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04CC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04D4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04DC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04E4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04EC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04F4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x04FC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0504]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x050C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0514]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x051C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0524]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x052C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0534]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x053C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0544]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x054C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0554]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x055C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0564]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x056C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0574]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x057C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0584]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x058C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x0594]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x059C]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x05A4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x05AC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x05B4]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 374): [0x05BC]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 375): [0x05C4]               screen_buffer_end:
-test.dasm (line 376): [0x05C4]               keyboard_index:
-test.dasm (line 377): [0x05C4]                 .dat -1
-test.dasm (line 377): [0x05C4]                      FFFF
-test.dasm (line 378): [0x05C5]               screen_index:
-test.dasm (line 379): [0x05C5]                 .dat -1
-test.dasm (line 379): [0x05C5]                      FFFF
-test.dasm (line 380): [0x05C6]               successful_count:
-test.dasm (line 381): [0x05C6]                 .dat 0
-test.dasm (line 381): [0x05C6]                      0000
-test.dasm (line 382): [0x05C7]               text_color:
-test.dasm (line 383): [0x05C7]                 .dat 0xF000
-test.dasm (line 383): [0x05C7]                      F000
-test.dasm (line 384): [0x05C8]               default_palette:
-test.dasm (line 385): [0x05C8]                 .dat 0x000,0x00A,0x0A0,0x0AA,0xA00,0xA0A,0xA50,0xAAA,0x555,0x55F,0x5F5,0x5FF,0xF55,0xF5F,0xFF5,0xFFF
-test.dasm (line 385): [0x05C8]                      0000 000A 00A0 00AA 0A00 0A0A 0A50 0AAA
-test.dasm (line 385): [0x05D0]                      0555 055F 05F5 05FF 0F55 0F5F 0FF5 0FFF
-test.dasm (line 386): [0x05D8]               actual_palette:
-test.dasm (line 387): [0x05D8]                 .reserve 0xF
-test.dasm (line 387): [0x05D8]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 387): [0x05E0]                      0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 388): [0x05E7]               default_font:
-test.dasm (line 389): [0x05E7]                 .incpack "font.bin"
-test.dasm (line 389): [0x05E7]                      B79E 388E 722C 75F4 19BB 7F8F 85F9 B158
-test.dasm (line 389): [0x05EF]                      242E 2400 082A 0800 0008 0000 0808 0808
-test.dasm (line 389): [0x05F7]                      00FF 0000 00F8 0808 08F8 0000 080F 0000
-test.dasm (line 389): [0x05FF]                      000F 0808 00FF 0808 08F8 0808 08FF 0000
-test.dasm (line 389): [0x0607]                      080F 0808 08FF 0808 6633 99CC 9933 66CC
-test.dasm (line 389): [0x060F]                      FEF8 E080 7F1F 0701 0107 1F7F 80E0 F8FE
-test.dasm (line 389): [0x0617]                      5500 AA00 55AA 55AA FFAA FF55 0F0F 0F0F
-test.dasm (line 389): [0x061F]                      F0F0 F0F0 0000 FFFF FFFF 0000 FFFF FFFF
-test.dasm (line 389): [0x0627]                      0000 0000 005F 0000 0300 0300 3E14 3E00
-test.dasm (line 389): [0x062F]                      266B 3200 611C 4300 3629 7650 0002 0100
-test.dasm (line 389): [0x0637]                      1C22 4100 4122 1C00 1408 1400 081C 0800
-test.dasm (line 389): [0x063F]                      4020 0000 0808 0800 0040 0000 601C 0300
-test.dasm (line 389): [0x0647]                      3E49 3E00 427F 4000 6259 4600 2249 3600
-test.dasm (line 389): [0x064F]                      0F08 7F00 2745 3900 3E49 3200 6119 0700
-test.dasm (line 389): [0x0657]                      3649 3600 2649 3E00 0024 0000 4024 0000
-test.dasm (line 389): [0x065F]                      0814 2200 1414 1400 2214 0800 0259 0600
-test.dasm (line 389): [0x0667]                      3E59 5E00 7E09 7E00 7F49 3600 3E41 2200
-test.dasm (line 389): [0x066F]                      7F41 3E00 7F49 4100 7F09 0100 3E41 7A00
-test.dasm (line 389): [0x0677]                      7F08 7F00 417F 4100 2040 3F00 7F08 7700
-test.dasm (line 389): [0x067F]                      7F40 4000 7F06 7F00 7F01 7E00 3E41 3E00
-test.dasm (line 389): [0x0687]                      7F09 0600 3E61 7E00 7F09 7600 2649 3200
-test.dasm (line 389): [0x068F]                      017F 0100 3F40 7F00 1F60 1F00 7F30 7F00
-test.dasm (line 389): [0x0697]                      7708 7700 0778 0700 7149 4700 007F 4100
-test.dasm (line 389): [0x069F]                      031C 6000 417F 0000 0201 0200 8080 8000
-test.dasm (line 389): [0x06A7]                      0001 0200 2454 7800 7F44 3800 3844 2800
-test.dasm (line 389): [0x06AF]                      3844 7F00 3854 5800 087E 0900 4854 3C00
-test.dasm (line 389): [0x06B7]                      7F04 7800 047D 0000 2040 3D00 7F10 6C00
-test.dasm (line 389): [0x06BF]                      017F 0000 7C18 7C00 7C04 7800 3844 3800
-test.dasm (line 389): [0x06C7]                      7C14 0800 0814 7C00 7C04 0800 4854 2400
-test.dasm (line 389): [0x06CF]                      043E 4400 3C40 7C00 1C60 1C00 7C30 7C00
-test.dasm (line 389): [0x06D7]                      6C10 6C00 4C50 3C00 6454 4C00 0836 4100
-test.dasm (line 389): [0x06DF]                      0077 0000 4136 0800 0201 0201 0205 0200
-test.dasm (line 390): [0x06E7]               actual_font:
-test.dasm (line 391): [0x06E7]                 .reserve 512
-test.dasm (line 391): [0x06E7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x06EF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x06F7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x06FF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0707]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x070F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0717]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x071F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0727]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x072F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0737]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x073F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0747]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x074F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0757]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x075F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0767]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x076F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0777]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x077F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0787]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x078F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0797]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x079F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07A7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07AF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07B7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07BF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07C7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07CF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07D7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07DF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07E7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07EF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07F7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x07FF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0807]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x080F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0817]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x081F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0827]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x082F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0837]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x083F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0847]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x084F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0857]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x085F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0867]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x086F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0877]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x087F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0887]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x088F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x0897]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x089F]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08A7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08AF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08B7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08BF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08C7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08CF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08D7]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 391): [0x08DF]                      0000 0000 0000 0000 0000 0000 0000 0000
-test.dasm (line 392): [0x08E7]               test_character:
-test.dasm (line 393): [0x08E7]                 .dat 0b00000111_00000010
-test.dasm (line 393): [0x08E7]                      40E0
-test.dasm (line 394): [0x08E8]                 .dat 0b00000000_00000010
-test.dasm (line 394): [0x08E8]                      4000
+test.dasm (line 12):  [0x0009] 7C41 0100       SET C, startup_text
+test.dasm (line 13):  [0x000B] 7C20 040C       JSR prints
+test.dasm (line 14):  [0x000D] 7C20 0425       JSR waitkey
+test.dasm (line 15):  [0x000F] 7C20 042C       JSR clear_screen
+test.dasm (line 18):  [0x0011]               lem1802_dump_font_test:
+test.dasm (line 19):  [0x0011] 7C20 042C       JSR clear_screen
+test.dasm (line 20):  [0x0013] 7C20 00DE       JSR write_lem1802_header
+test.dasm (line 21):  [0x0015] 8401            SET A, 0
+test.dasm (line 22):  [0x0016] 8C21            SET B, 2
+test.dasm (line 23):  [0x0017] 7C41 020D       SET C, lem1802_dump_font_text
+test.dasm (line 24):  [0x0019] 7C20 040C       JSR prints
+test.dasm (line 26):  [0x001B] 9401            SET A, 4
+test.dasm (line 27):  [0x001C] 7C21 06E8       SET B, actual_font
+test.dasm (line 28):  [0x001E] 7A40 05C6       HWI [screen_index]
+test.dasm (line 29):  [0x0020] 7C01 05E8       SET A, default_font
+test.dasm (line 30):  [0x0022] 7C21 06E8       SET B, actual_font
+test.dasm (line 31):  [0x0024] C041            SET C, 0xF
+test.dasm (line 32):  [0x0025] 7C20 00E5       JSR compare_memory
+test.dasm (line 33):  [0x0027] 88E2            ADD J, 1
+test.dasm (line 35):  [0x0028]               lem1802_dump_palette_test:
+test.dasm (line 36):  [0x0028] 7C20 042C       JSR clear_screen
+test.dasm (line 37):  [0x002A] 7C20 00DE       JSR write_lem1802_header
+test.dasm (line 38):  [0x002C] 8401            SET A, 0
+test.dasm (line 39):  [0x002D] 8C21            SET B, 2
+test.dasm (line 40):  [0x002E] 7C41 01E7       SET C, lem1802_dump_palette_text
+test.dasm (line 41):  [0x0030] 7C20 040C       JSR prints
+test.dasm (line 43):  [0x0032] 9801            SET A, 5
+test.dasm (line 44):  [0x0033] 7C21 05D9       SET B, actual_palette
+test.dasm (line 45):  [0x0035] 7A40 05C6       HWI [screen_index]
+test.dasm (line 46):  [0x0037] 7C01 05C9       SET A, default_palette
+test.dasm (line 47):  [0x0039] 7C21 05D9       SET B, actual_palette
+test.dasm (line 48):  [0x003B] C041            SET C, 0xF
+test.dasm (line 49):  [0x003C] 7C20 00E5       JSR compare_memory
+test.dasm (line 50):  [0x003E] 88E2            ADD J, 1
+test.dasm (line 52):  [0x003F]               lem1802_border:
+test.dasm (line 53):  [0x003F] 7C20 00DE       JSR write_lem1802_header
+test.dasm (line 54):  [0x0041] 8401            SET A, 0
+test.dasm (line 55):  [0x0042] 8821            SET B, 1
+test.dasm (line 56):  [0x0043] 7C41 0196       SET C, lem1802_border_text
+test.dasm (line 57):  [0x0045] 7C20 040C       JSR prints
+test.dasm (line 59):  [0x0047] 84C1            SET I, 0
+test.dasm (line 60):  [0x0048]               .loop:
+test.dasm (line 61):  [0x0048] 9001            SET A, 3
+test.dasm (line 62):  [0x0049] 1821            SET B, I
+test.dasm (line 63):  [0x004A] 7A40 05C6       HWI [screen_index]
+test.dasm (line 65):  [0x004C] 8401            SET A, 0
+test.dasm (line 66):  [0x004D] 9821            SET B, 5
+test.dasm (line 67):  [0x004E] 1841            SET C, I
+test.dasm (line 68):  [0x004F] A444            MUL C, 8
+test.dasm (line 69):  [0x0050] 7C42 02E4       ADD C, colors
+test.dasm (line 70):  [0x0052] 7C20 040C       JSR prints
+test.dasm (line 71):  [0x0054]               .keyloop:
+test.dasm (line 72):  [0x0054] 7C20 0425       JSR waitkey
+test.dasm (line 73):  [0x0056] 7C52 0079       IFE C, 'y'
+test.dasm (line 74):  [0x0058] 7F81 0062       SET PC, .iterate
+test.dasm (line 75):  [0x005A] 7C52 006E       IFE C, 'n'
+test.dasm (line 76):  [0x005C] 7F81 0060       SET PC, .fail
+test.dasm (line 77):  [0x005E] 7F81 0054       SET PC, .keyloop
+test.dasm (line 78):  [0x0060]               .fail:
+test.dasm (line 79):  [0x0060] 86E1 0364       SET [J + test_results], 0
+test.dasm (line 80):  [0x0062]               .iterate:
+test.dasm (line 81):  [0x0062] 88C2            ADD I, 1
+test.dasm (line 82):  [0x0063] C4D3            IFN I, 16
+test.dasm (line 83):  [0x0064] 7F81 0048       SET PC, .loop
+test.dasm (line 84):  [0x0066] 9001            SET A, 3
+test.dasm (line 85):  [0x0067] 8421            SET B, 0
+test.dasm (line 86):  [0x0068] 7A40 05C6       HWI [screen_index]
+test.dasm (line 87):  [0x006A] 88E2            ADD J, 1
+test.dasm (line 89):  [0x006B]               lem1802_map_font_test:
+test.dasm (line 90):  [0x006B] 7C20 042C       JSR clear_screen
+test.dasm (line 91):  [0x006D] 7C20 00DE       JSR write_lem1802_header
+test.dasm (line 92):  [0x006F] 8401            SET A, 0
+test.dasm (line 93):  [0x0070] 8821            SET B, 1
+test.dasm (line 94):  [0x0071] 7C41 0230       SET C, lem1802_map_font_text
+test.dasm (line 95):  [0x0073] 7C20 040C       JSR prints
+test.dasm (line 97):  [0x0075] 7BC1 08E8 063C  SET [default_font + ('*' * 2)], [test_character]
+test.dasm (line 98):  [0x0078] 7BC1 08E9 063D  SET [default_font + ('*' * 2) + 1], [test_character + 1]
+test.dasm (line 100): [0x007B] 8801            SET A, 1
+test.dasm (line 101): [0x007C] 7C21 05E8       SET B, default_font
+test.dasm (line 102): [0x007E] 7A40 05C6       HWI [screen_index]
+test.dasm (line 104): [0x0080] 7FC1 F02A 0505  SET [screen_buffer + (32 * 6)], '*' | 0xF000
+test.dasm (line 106): [0x0083] 7C20 00F2       JSR determine_success_y_n
+test.dasm (line 109): [0x0085] 8801            SET A, 1
+test.dasm (line 110): [0x0086] 8421            SET B, 0
+test.dasm (line 111): [0x0087] 7A40 05C6       HWI [screen_index]
+test.dasm (line 113): [0x0089] 88E2            ADD J, 1
+test.dasm (line 115): [0x008A]               lem1802_map_palette_test:
+test.dasm (line 116): [0x008A] 7C20 042C       JSR clear_screen
+test.dasm (line 117): [0x008C] 7C20 00DE       JSR write_lem1802_header
+test.dasm (line 118): [0x008E] 8401            SET A, 0
+test.dasm (line 119): [0x008F] 8821            SET B, 1
+test.dasm (line 120): [0x0090] 7C41 027F       SET C, lem1802_map_palette_text
+test.dasm (line 121): [0x0092] 7C20 040C       JSR prints
+test.dasm (line 123): [0x0094] 7FC1 0F00 05CA  SET [default_palette + 1], 0xF00
+test.dasm (line 125): [0x0097] 8C01            SET A, 2
+test.dasm (line 126): [0x0098] 7C21 05C9       SET B, default_palette
+test.dasm (line 127): [0x009A] 7A40 05C6       HWI [screen_index]
+test.dasm (line 129): [0x009C] 8401            SET A, 0
+test.dasm (line 130): [0x009D] 9C21            SET B, 6
+test.dasm (line 131): [0x009E] 7C41 02C8       SET C, lem1802_map_palette_test_text
+test.dasm (line 132): [0x00A0] 7FC1 1000 05C8  SET [text_color], 0x1000
+test.dasm (line 133): [0x00A3] 7C20 040C       JSR prints
+test.dasm (line 134): [0x00A5] 7FC1 F000 05C8  SET [text_color], 0xF000
+test.dasm (line 136): [0x00A8] 7C20 00F2       JSR determine_success_y_n
+test.dasm (line 138): [0x00AA] 8801            SET A, 1
+test.dasm (line 139): [0x00AB] 8421            SET B, 0
+test.dasm (line 140): [0x00AC] 7A40 05C6       HWI [screen_index]
+test.dasm (line 142): [0x00AE] 88E2            ADD J, 1
+test.dasm (line 145): [0x00AF]               show_results:
+test.dasm (line 146): [0x00AF] 7C20 042C       JSR clear_screen
+test.dasm (line 147): [0x00B1] 84E1            SET J, 0
+test.dasm (line 148): [0x00B2]               .show_page:
+test.dasm (line 149): [0x00B2] 8401            SET A, 0
+test.dasm (line 150): [0x00B3] 8421            SET B, 0
+test.dasm (line 151): [0x00B4] 7C41 02D6       SET C, results_text
+test.dasm (line 152): [0x00B6] 7C20 040C       JSR prints
+test.dasm (line 153): [0x00B8]               .loop:
+test.dasm (line 155): [0x00B8] 8401            SET A, 0
+test.dasm (line 156): [0x00B9] 1C21            SET B, J
+test.dasm (line 157): [0x00BA] 8822            ADD B, 1
+test.dasm (line 158): [0x00BB] 1C41            SET C, J
+test.dasm (line 159): [0x00BC] DC44            MUL C, test_name_length
+test.dasm (line 160): [0x00BD] 7C42 0369       ADD C, test_names
+test.dasm (line 161): [0x00BF] 7C20 040C       JSR prints
+test.dasm (line 163): [0x00C1] 0401            SET A, B
+test.dasm (line 164): [0x00C2] 7C26 0020       DIV B, 32
+test.dasm (line 165): [0x00C4] 7C08 0020       MOD A, 32
+test.dasm (line 166): [0x00C6] 1C41            SET C, J
+test.dasm (line 167): [0x00C7] 7C42 0364       ADD C, test_results
+test.dasm (line 168): [0x00C9] 2841            SET C, [C]
+test.dasm (line 169): [0x00CA] 9844            MUL C, 5
+test.dasm (line 170): [0x00CB] 7C42 03D7       ADD C, test_success_text
+test.dasm (line 171): [0x00CD] 7C20 040C       JSR prints
+test.dasm (line 173): [0x00CF] 88E2            ADD J, 1
+test.dasm (line 174): [0x00D0] 98F2            IFE J, test_results_end - test_results
+test.dasm (line 175): [0x00D1] 7F81 00D6       SET PC, .keyloop
+test.dasm (line 176): [0x00D3] ACF3            IFN J, 10
+test.dasm (line 177): [0x00D4] 7F81 00B8       SET PC, .loop
+test.dasm (line 178): [0x00D6]               .keyloop:
+test.dasm (line 179): [0x00D6] 8B83            SUB PC, 1
+test.dasm (line 181): [0x00D7]               nokeyboard:
+test.dasm (line 182): [0x00D7] 8401            SET A, 0
+test.dasm (line 183): [0x00D8] 8421            SET B, 0
+test.dasm (line 184): [0x00D9] 7C41 0129       SET C, nokeyboard_text
+test.dasm (line 185): [0x00DB] 7C20 040C       JSR prints
+test.dasm (line 186): [0x00DD] 8B83            SUB PC, 1
+test.dasm (line 188): [0x00DE]               write_lem1802_header:
+test.dasm (line 189): [0x00DE] 8401            SET A, 0
+test.dasm (line 190): [0x00DF] 8421            SET B, 0
+test.dasm (line 191): [0x00E0] 7C41 0175       SET C, lem1802_text
+test.dasm (line 192): [0x00E2] 7C20 040C       JSR prints
+test.dasm (line 193): [0x00E4] 6381            SET PC, POP
+test.dasm (line 196): [0x00E5]               compare_memory:
+test.dasm (line 197): [0x00E5] 2513            IFN [A], [B]
+test.dasm (line 198): [0x00E6] 7F81 00EF       SET PC, .fail
+test.dasm (line 199): [0x00E8] 8452            IFE C, 0
+test.dasm (line 200): [0x00E9] 6381            SET PC, POP
+test.dasm (line 201): [0x00EA] 8802            ADD A, 1
+test.dasm (line 202): [0x00EB] 8822            ADD B, 1
+test.dasm (line 203): [0x00EC] 8843            SUB C, 1
+test.dasm (line 204): [0x00ED] 7F81 00E5       SET PC, compare_memory
+test.dasm (line 205): [0x00EF]               .fail:
+test.dasm (line 206): [0x00EF] 86E1 0364       SET [test_results + J], 0
+test.dasm (line 207): [0x00F1] 6381            SET PC, POP
+test.dasm (line 209): [0x00F2]               determine_success_y_n:
+test.dasm (line 210): [0x00F2] 7C20 0425       JSR waitkey
+test.dasm (line 211): [0x00F4] 7C52 006E       IFE C, 'n'
+test.dasm (line 212): [0x00F6] 7F81 00FD       SET PC, .fail
+test.dasm (line 213): [0x00F8] 7C53 0079       IFN C, 'y'
+test.dasm (line 214): [0x00FA] 7F81 00F2       SET PC, determine_success_y_n
+test.dasm (line 215): [0x00FC] 6381            SET PC, POP
+test.dasm (line 216): [0x00FD]               .fail:
+test.dasm (line 217): [0x00FD] 86E1 0364       SET [test_results + J], 0
+test.dasm (line 218): [0x00FF] 6381            SET PC, POP
+test.dasm (line 221): [0x0100]               startup_text:
+test.dasm (line 222): [0x0100]                 .dat "DCPU Emulator Test\nPress a key to begin.", 0
+test.dasm (line 222): [0x0100]                      0044 0043 0050 0055 0020 0045 006D 0075
+test.dasm (line 222): [0x0108]                      006C 0061 0074 006F 0072 0020 0054 0065
+test.dasm (line 222): [0x0110]                      0073 0074 000A 0050 0072 0065 0073 0073
+test.dasm (line 222): [0x0118]                      0020 0061 0020 006B 0065 0079 0020 0074
+test.dasm (line 222): [0x0120]                      006F 0020 0062 0065 0067 0069 006E 002E
+test.dasm (line 222): [0x0128]                      0000
+test.dasm (line 223): [0x0129]               nokeyboard_text:
+test.dasm (line 224): [0x0129]                 .dat "ERROR:\nNo keyboard detected.\nPlease plug in Generic Keyboard\nID: 0x30cf7406", 0
+test.dasm (line 224): [0x0129]                      0045 0052 0052 004F 0052 003A 000A 004E
+test.dasm (line 224): [0x0131]                      006F 0020 006B 0065 0079 0062 006F 0061
+test.dasm (line 224): [0x0139]                      0072 0064 0020 0064 0065 0074 0065 0063
+test.dasm (line 224): [0x0141]                      0074 0065 0064 002E 000A 0050 006C 0065
+test.dasm (line 224): [0x0149]                      0061 0073 0065 0020 0070 006C 0075 0067
+test.dasm (line 224): [0x0151]                      0020 0069 006E 0020 0047 0065 006E 0065
+test.dasm (line 224): [0x0159]                      0072 0069 0063 0020 004B 0065 0079 0062
+test.dasm (line 224): [0x0161]                      006F 0061 0072 0064 000A 0049 0044 003A
+test.dasm (line 224): [0x0169]                      0020 0030 0078 0033 0030 0063 0066 0037
+test.dasm (line 224): [0x0171]                      0034 0030 0036 0000
+test.dasm (line 225): [0x0175]               lem1802_text:
+test.dasm (line 226): [0x0175]                 .dat "=========LEM 1802 Tests=========", 0
+test.dasm (line 226): [0x0175]                      003D 003D 003D 003D 003D 003D 003D 003D
+test.dasm (line 226): [0x017D]                      003D 004C 0045 004D 0020 0031 0038 0030
+test.dasm (line 226): [0x0185]                      0032 0020 0054 0065 0073 0074 0073 003D
+test.dasm (line 226): [0x018D]                      003D 003D 003D 003D 003D 003D 003D 003D
+test.dasm (line 226): [0x0195]                      0000
+test.dasm (line 227): [0x0196]               lem1802_border_text:
+test.dasm (line 228): [0x0196]                 .dat "Screen Border Test\nPress Y if the color shown is\naccurate. Press N if it is not.", 0
+test.dasm (line 228): [0x0196]                      0053 0063 0072 0065 0065 006E 0020 0042
+test.dasm (line 228): [0x019E]                      006F 0072 0064 0065 0072 0020 0054 0065
+test.dasm (line 228): [0x01A6]                      0073 0074 000A 0050 0072 0065 0073 0073
+test.dasm (line 228): [0x01AE]                      0020 0059 0020 0069 0066 0020 0074 0068
+test.dasm (line 228): [0x01B6]                      0065 0020 0063 006F 006C 006F 0072 0020
+test.dasm (line 228): [0x01BE]                      0073 0068 006F 0077 006E 0020 0069 0073
+test.dasm (line 228): [0x01C6]                      000A 0061 0063 0063 0075 0072 0061 0074
+test.dasm (line 228): [0x01CE]                      0065 002E 0020 0050 0072 0065 0073 0073
+test.dasm (line 228): [0x01D6]                      0020 004E 0020 0069 0066 0020 0069 0074
+test.dasm (line 228): [0x01DE]                      0020 0069 0073 0020 006E 006F 0074 002E
+test.dasm (line 228): [0x01E6]                      0000
+test.dasm (line 229): [0x01E7]               lem1802_dump_palette_text:
+test.dasm (line 230): [0x01E7]                 .dat "Testing default palette.\nPlease wait.", 0
+test.dasm (line 230): [0x01E7]                      0054 0065 0073 0074 0069 006E 0067 0020
+test.dasm (line 230): [0x01EF]                      0064 0065 0066 0061 0075 006C 0074 0020
+test.dasm (line 230): [0x01F7]                      0070 0061 006C 0065 0074 0074 0065 002E
+test.dasm (line 230): [0x01FF]                      000A 0050 006C 0065 0061 0073 0065 0020
+test.dasm (line 230): [0x0207]                      0077 0061 0069 0074 002E 0000
+test.dasm (line 231): [0x020D]               lem1802_dump_font_text:
+test.dasm (line 232): [0x020D]                 .dat "Testing default font.\nPlease wait.", 0
+test.dasm (line 232): [0x020D]                      0054 0065 0073 0074 0069 006E 0067 0020
+test.dasm (line 232): [0x0215]                      0064 0065 0066 0061 0075 006C 0074 0020
+test.dasm (line 232): [0x021D]                      0066 006F 006E 0074 002E 000A 0050 006C
+test.dasm (line 232): [0x0225]                      0065 0061 0073 0065 0020 0077 0061 0069
+test.dasm (line 232): [0x022D]                      0074 002E 0000
+test.dasm (line 233): [0x0230]               lem1802_map_font_text:
+test.dasm (line 234): [0x0230]                 .dat "Font Map Test\nPress Y if a small cross is\nvisible below. Press N if it is not.", 0
+test.dasm (line 234): [0x0230]                      0046 006F 006E 0074 0020 004D 0061 0070
+test.dasm (line 234): [0x0238]                      0020 0054 0065 0073 0074 000A 0050 0072
+test.dasm (line 234): [0x0240]                      0065 0073 0073 0020 0059 0020 0069 0066
+test.dasm (line 234): [0x0248]                      0020 0061 0020 0073 006D 0061 006C 006C
+test.dasm (line 234): [0x0250]                      0020 0063 0072 006F 0073 0073 0020 0069
+test.dasm (line 234): [0x0258]                      0073 000A 0076 0069 0073 0069 0062 006C
+test.dasm (line 234): [0x0260]                      0065 0020 0062 0065 006C 006F 0077 002E
+test.dasm (line 234): [0x0268]                      0020 0050 0072 0065 0073 0073 0020 004E
+test.dasm (line 234): [0x0270]                      0020 0069 0066 0020 0069 0074 0020 0069
+test.dasm (line 234): [0x0278]                      0073 0020 006E 006F 0074 002E 0000
+test.dasm (line 235): [0x027F]               lem1802_map_palette_text:
+test.dasm (line 236): [0x027F]                 .dat "Palette Map Test\nPress Y if the text below is\nred. Press N if it is not.", 0
+test.dasm (line 236): [0x027F]                      0050 0061 006C 0065 0074 0074 0065 0020
+test.dasm (line 236): [0x0287]                      004D 0061 0070 0020 0054 0065 0073 0074
+test.dasm (line 236): [0x028F]                      000A 0050 0072 0065 0073 0073 0020 0059
+test.dasm (line 236): [0x0297]                      0020 0069 0066 0020 0074 0068 0065 0020
+test.dasm (line 236): [0x029F]                      0074 0065 0078 0074 0020 0062 0065 006C
+test.dasm (line 236): [0x02A7]                      006F 0077 0020 0069 0073 000A 0072 0065
+test.dasm (line 236): [0x02AF]                      0064 002E 0020 0050 0072 0065 0073 0073
+test.dasm (line 236): [0x02B7]                      0020 004E 0020 0069 0066 0020 0069 0074
+test.dasm (line 236): [0x02BF]                      0020 0069 0073 0020 006E 006F 0074 002E
+test.dasm (line 236): [0x02C7]                      0000
+test.dasm (line 237): [0x02C8]               lem1802_map_palette_test_text:
+test.dasm (line 238): [0x02C8]                 .dat "Hello, world!", 0
+test.dasm (line 238): [0x02C8]                      0048 0065 006C 006C 006F 002C 0020 0077
+test.dasm (line 238): [0x02D0]                      006F 0072 006C 0064 0021 0000
+test.dasm (line 239): [0x02D6]               results_text:
+test.dasm (line 240): [0x02D6]                 .dat "Test Results:", 0
+test.dasm (line 240): [0x02D6]                      0054 0065 0073 0074 0020 0052 0065 0073
+test.dasm (line 240): [0x02DE]                      0075 006C 0074 0073 003A 0000
+test.dasm (line 242): [0x02E4]               colors:
+test.dasm (line 243): [0x02E4]                 .dat "Black  ", 0
+test.dasm (line 243): [0x02E4]                      0042 006C 0061 0063 006B 0020 0020 0000
+test.dasm (line 244): [0x02EC]                 .dat "Blue   ", 0
+test.dasm (line 244): [0x02EC]                      0042 006C 0075 0065 0020 0020 0020 0000
+test.dasm (line 245): [0x02F4]                 .dat "D Green", 0
+test.dasm (line 245): [0x02F4]                      0044 0020 0047 0072 0065 0065 006E 0000
+test.dasm (line 246): [0x02FC]                 .dat "Teal   ", 0
+test.dasm (line 246): [0x02FC]                      0054 0065 0061 006C 0020 0020 0020 0000
+test.dasm (line 247): [0x0304]                 .dat "Red    ", 0
+test.dasm (line 247): [0x0304]                      0052 0065 0064 0020 0020 0020 0020 0000
+test.dasm (line 248): [0x030C]                 .dat "Purple ", 0
+test.dasm (line 248): [0x030C]                      0050 0075 0072 0070 006C 0065 0020 0000
+test.dasm (line 249): [0x0314]                 .dat "Orange ", 0
+test.dasm (line 249): [0x0314]                      004F 0072 0061 006E 0067 0065 0020 0000
+test.dasm (line 250): [0x031C]                 .dat "L Gray ", 0
+test.dasm (line 250): [0x031C]                      004C 0020 0047 0072 0061 0079 0020 0000
+test.dasm (line 251): [0x0324]                 .dat "D Gray ", 0
+test.dasm (line 251): [0x0324]                      0044 0020 0047 0072 0061 0079 0020 0000
+test.dasm (line 252): [0x032C]                 .dat "D Blue ", 0
+test.dasm (line 252): [0x032C]                      0044 0020 0042 006C 0075 0065 0020 0000
+test.dasm (line 253): [0x0334]                 .dat "L Green", 0
+test.dasm (line 253): [0x0334]                      004C 0020 0047 0072 0065 0065 006E 0000
+test.dasm (line 254): [0x033C]                 .dat "L Blue ", 0
+test.dasm (line 254): [0x033C]                      004C 0020 0042 006C 0075 0065 0020 0000
+test.dasm (line 255): [0x0344]                 .dat "Red    ", 0
+test.dasm (line 255): [0x0344]                      0052 0065 0064 0020 0020 0020 0020 0000
+test.dasm (line 256): [0x034C]                 .dat "Pink   ", 0
+test.dasm (line 256): [0x034C]                      0050 0069 006E 006B 0020 0020 0020 0000
+test.dasm (line 257): [0x0354]                 .dat "Yellow ", 0
+test.dasm (line 257): [0x0354]                      0059 0065 006C 006C 006F 0077 0020 0000
+test.dasm (line 258): [0x035C]                 .dat "White  ", 0
+test.dasm (line 258): [0x035C]                      0057 0068 0069 0074 0065 0020 0020 0000
+test.dasm (line 261): [0x0364]               test_results:
+test.dasm (line 262): [0x0364]                 .dat 1, 1, 1, 1, 1
+test.dasm (line 262): [0x0364]                      0001 0001 0001 0001 0001
+test.dasm (line 263): [0x0369]               test_results_end:
+test.dasm (line 264): [0x0369]               test_names:
+test.dasm (line 265): [0x0369]                 .dat "LEM Border:          ", 0
+test.dasm (line 265): [0x0369]                      004C 0045 004D 0020 0042 006F 0072 0064
+test.dasm (line 265): [0x0371]                      0065 0072 003A 0020 0020 0020 0020 0020
+test.dasm (line 265): [0x0379]                      0020 0020 0020 0020 0020 0000
+test.dasm (line 266): [0x037F]               .equ test_name_length $ - test_names
+test.dasm (line 267): [0x037F]                 .dat "LEM Default Font:    ", 0
+test.dasm (line 267): [0x037F]                      004C 0045 004D 0020 0044 0065 0066 0061
+test.dasm (line 267): [0x0387]                      0075 006C 0074 0020 0046 006F 006E 0074
+test.dasm (line 267): [0x038F]                      003A 0020 0020 0020 0020 0000
+test.dasm (line 268): [0x0395]                 .dat "LEM Default Palette: ", 0
+test.dasm (line 268): [0x0395]                      004C 0045 004D 0020 0044 0065 0066 0061
+test.dasm (line 268): [0x039D]                      0075 006C 0074 0020 0050 0061 006C 0065
+test.dasm (line 268): [0x03A5]                      0074 0074 0065 003A 0020 0000
+test.dasm (line 269): [0x03AB]                 .dat "LEM Font Map:        ", 0
+test.dasm (line 269): [0x03AB]                      004C 0045 004D 0020 0046 006F 006E 0074
+test.dasm (line 269): [0x03B3]                      0020 004D 0061 0070 003A 0020 0020 0020
+test.dasm (line 269): [0x03BB]                      0020 0020 0020 0020 0020 0000
+test.dasm (line 270): [0x03C1]                 .dat "LEM Palette Map:     ", 0
+test.dasm (line 270): [0x03C1]                      004C 0045 004D 0020 0050 0061 006C 0065
+test.dasm (line 270): [0x03C9]                      0074 0074 0065 0020 004D 0061 0070 003A
+test.dasm (line 270): [0x03D1]                      0020 0020 0020 0020 0020 0000
+test.dasm (line 271): [0x03D7]               test_names_end:
+test.dasm (line 273): [0x03D7]               test_success_text:
+test.dasm (line 274): [0x03D7]                 .dat "FAIL", 0
+test.dasm (line 274): [0x03D7]                      0046 0041 0049 004C 0000
+test.dasm (line 275): [0x03DC]                 .dat "PASS", 0
+test.dasm (line 275): [0x03DC]                      0050 0041 0053 0053 0000
+test.dasm (line 278): [0x03E1]               init_devices:
+test.dasm (line 280): [0x03E1] 0200            HWN A
+test.dasm (line 281): [0x03E2] 8803            SUB A, 1
+test.dasm (line 283): [0x03E3] 0F01            SET PUSH, X
+test.dasm (line 284): [0x03E4] 1301            SET PUSH, Y
+test.dasm (line 285): [0x03E5] 7C20 03EA       JSR .loop
+test.dasm (line 286): [0x03E7] 6081            SET Y, POP
+test.dasm (line 287): [0x03E8] 6061            SET X, POP
+test.dasm (line 289): [0x03E9] 6381            SET PC, POP
+test.dasm (line 290): [0x03EA]               .loop:
+test.dasm (line 292): [0x03EA] 8012            IFE A, -1
+test.dasm (line 293): [0x03EB] 6381            SET PC, POP
+test.dasm (line 294): [0x03EC] 0301            SET PUSH, A
+test.dasm (line 295): [0x03ED] 0220            HWQ A
+test.dasm (line 296): [0x03EE] 7C12 F615       IFE A, 0xf615
+test.dasm (line 297): [0x03F0] 7C32 7349       IFE B, 0x7349
+test.dasm (line 298): [0x03F2] 7F81 03FE       SET PC, .init_screen
+test.dasm (line 299): [0x03F4] 7C12 7406       IFE A, 0x7406
+test.dasm (line 300): [0x03F6] 7C32 30CF       IFE B, 0x30cf
+test.dasm (line 301): [0x03F8] 7F81 0408       SET PC, .init_keyboard
+test.dasm (line 302): [0x03FA] 6001            SET A, POP
+test.dasm (line 303): [0x03FB]               .finish:
+test.dasm (line 304): [0x03FB] 8803            SUB A, 1
+test.dasm (line 305): [0x03FC] 7F81 03EA       SET PC, .loop
+test.dasm (line 306): [0x03FE]               .init_screen:
+test.dasm (line 307): [0x03FE] 6041            SET C, POP
+test.dasm (line 308): [0x03FF] 0BC1 05C6       SET [screen_index], C
+test.dasm (line 309): [0x0401] 8401            SET A, 0
+test.dasm (line 310): [0x0402] 7C21 0445       SET B, screen_buffer
+test.dasm (line 311): [0x0404] 0A40            HWI C
+test.dasm (line 312): [0x0405] 0801            SET A, C
+test.dasm (line 313): [0x0406] 7F81 03FB       SET PC, .finish
+test.dasm (line 314): [0x0408]               .init_keyboard:
+test.dasm (line 315): [0x0408] 67C1 05C5       SET [keyboard_index], [SP]
+test.dasm (line 316): [0x040A] 7F81 03FA       SET PC, .finish - 1
+test.dasm (line 319): [0x040C]               prints:
+test.dasm (line 320): [0x040C] 7C24 0020       MUL B, 32
+test.dasm (line 321): [0x040E] 0022            ADD B, A
+test.dasm (line 322): [0x040F]               .loop:
+test.dasm (line 323): [0x040F] 2801            SET A, [C]
+test.dasm (line 324): [0x0410] 8412            IFE A, 0
+test.dasm (line 325): [0x0411] 6381            SET PC, POP
+test.dasm (line 326): [0x0412] AC12            IFE A, '\n'
+test.dasm (line 327): [0x0413] 7F81 041D       SET PC, .newline
+test.dasm (line 328): [0x0415] 780B 05C8       BOR A, [text_color]
+test.dasm (line 329): [0x0417] 0221 0445       SET [B + screen_buffer], A
+test.dasm (line 330): [0x0419]               .iterate:
+test.dasm (line 331): [0x0419] 8822            ADD B, 1
+test.dasm (line 332): [0x041A] 8842            ADD C, 1
+test.dasm (line 333): [0x041B] 7F81 040F       SET PC, .loop
+test.dasm (line 334): [0x041D]               .newline:
+test.dasm (line 335): [0x041D] 7C26 0020       DIV B, 32
+test.dasm (line 336): [0x041F] 7C24 0020       MUL B, 32
+test.dasm (line 337): [0x0421] 7C22 001F       ADD B, 31
+test.dasm (line 338): [0x0423] 7F81 0419       SET PC, .iterate
+test.dasm (line 340): [0x0425]               waitkey:
+test.dasm (line 341): [0x0425] 8801            SET A, 1
+test.dasm (line 342): [0x0426] 7A40 05C5       HWI [keyboard_index]
+test.dasm (line 343): [0x0428] 8452            IFE C, 0
+test.dasm (line 344): [0x0429] 7F81 0426       SET PC, waitkey + 1
+test.dasm (line 345): [0x042B] 6381            SET PC, POP
+test.dasm (line 347): [0x042C]               clear_screen:
+test.dasm (line 348): [0x042C] 6C01            SET A, SP
+test.dasm (line 349): [0x042D] 7F61 05C5       SET SP, screen_buffer_end
+test.dasm (line 350): [0x042F]               .loop:
+test.dasm (line 351): [0x042F] 8701            SET PUSH, 0
+test.dasm (line 352): [0x0430] 8701            SET PUSH, 0
+test.dasm (line 353): [0x0431] 8701            SET PUSH, 0
+test.dasm (line 354): [0x0432] 8701            SET PUSH, 0
+test.dasm (line 355): [0x0433] 8701            SET PUSH, 0
+test.dasm (line 356): [0x0434] 8701            SET PUSH, 0
+test.dasm (line 357): [0x0435] 8701            SET PUSH, 0
+test.dasm (line 358): [0x0436] 8701            SET PUSH, 0
+test.dasm (line 359): [0x0437] 8701            SET PUSH, 0
+test.dasm (line 360): [0x0438] 8701            SET PUSH, 0
+test.dasm (line 361): [0x0439] 8701            SET PUSH, 0
+test.dasm (line 362): [0x043A] 8701            SET PUSH, 0
+test.dasm (line 363): [0x043B] 8701            SET PUSH, 0
+test.dasm (line 364): [0x043C] 8701            SET PUSH, 0
+test.dasm (line 365): [0x043D] 8701            SET PUSH, 0
+test.dasm (line 366): [0x043E] 8701            SET PUSH, 0
+test.dasm (line 367): [0x043F] 6FF3 0445       IFN screen_buffer, SP
+test.dasm (line 368): [0x0441] 7F81 042F       SET PC, .loop
+test.dasm (line 369): [0x0443] 0361            SET SP, A
+test.dasm (line 370): [0x0444] 6381            SET PC, POP
+test.dasm (line 373): [0x0445]               screen_buffer:
+test.dasm (line 374): [0x0445]                 .reserve 32 * 12
+test.dasm (line 374): [0x0445]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x044D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0455]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x045D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0465]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x046D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0475]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x047D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0485]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x048D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0495]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x049D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04A5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04AD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04B5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04BD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04C5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04CD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04D5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04DD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04E5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04ED]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04F5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x04FD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0505]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x050D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0515]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x051D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0525]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x052D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0535]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x053D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0545]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x054D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0555]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x055D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0565]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x056D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0575]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x057D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0585]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x058D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x0595]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x059D]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x05A5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x05AD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x05B5]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 374): [0x05BD]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 375): [0x05C5]               screen_buffer_end:
+test.dasm (line 376): [0x05C5]               keyboard_index:
+test.dasm (line 377): [0x05C5]                 .dat -1
+test.dasm (line 377): [0x05C5]                      FFFF
+test.dasm (line 378): [0x05C6]               screen_index:
+test.dasm (line 379): [0x05C6]                 .dat -1
+test.dasm (line 379): [0x05C6]                      FFFF
+test.dasm (line 380): [0x05C7]               successful_count:
+test.dasm (line 381): [0x05C7]                 .dat 0
+test.dasm (line 381): [0x05C7]                      0000
+test.dasm (line 382): [0x05C8]               text_color:
+test.dasm (line 383): [0x05C8]                 .dat 0xF000
+test.dasm (line 383): [0x05C8]                      F000
+test.dasm (line 384): [0x05C9]               default_palette:
+test.dasm (line 385): [0x05C9]                 .dat 0x000,0x00A,0x0A0,0x0AA,0xA00,0xA0A,0xA50,0xAAA,0x555,0x55F,0x5F5,0x5FF,0xF55,0xF5F,0xFF5,0xFFF
+test.dasm (line 385): [0x05C9]                      0000 000A 00A0 00AA 0A00 0A0A 0A50 0AAA
+test.dasm (line 385): [0x05D1]                      0555 055F 05F5 05FF 0F55 0F5F 0FF5 0FFF
+test.dasm (line 386): [0x05D9]               actual_palette:
+test.dasm (line 387): [0x05D9]                 .reserve 0xF
+test.dasm (line 387): [0x05D9]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 387): [0x05E1]                      0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 388): [0x05E8]               default_font:
+test.dasm (line 389): [0x05E8]                 .incpack "font.bin"
+test.dasm (line 389): [0x05E8]                      B79E 388E 722C 75F4 19BB 7F8F 85F9 B158
+test.dasm (line 389): [0x05F0]                      242E 2400 082A 0800 0008 0000 0808 0808
+test.dasm (line 389): [0x05F8]                      00FF 0000 00F8 0808 08F8 0000 080F 0000
+test.dasm (line 389): [0x0600]                      000F 0808 00FF 0808 08F8 0808 08FF 0000
+test.dasm (line 389): [0x0608]                      080F 0808 08FF 0808 6633 99CC 9933 66CC
+test.dasm (line 389): [0x0610]                      FEF8 E080 7F1F 0701 0107 1F7F 80E0 F8FE
+test.dasm (line 389): [0x0618]                      5500 AA00 55AA 55AA FFAA FF55 0F0F 0F0F
+test.dasm (line 389): [0x0620]                      F0F0 F0F0 0000 FFFF FFFF 0000 FFFF FFFF
+test.dasm (line 389): [0x0628]                      0000 0000 005F 0000 0300 0300 3E14 3E00
+test.dasm (line 389): [0x0630]                      266B 3200 611C 4300 3629 7650 0002 0100
+test.dasm (line 389): [0x0638]                      1C22 4100 4122 1C00 1408 1400 081C 0800
+test.dasm (line 389): [0x0640]                      4020 0000 0808 0800 0040 0000 601C 0300
+test.dasm (line 389): [0x0648]                      3E49 3E00 427F 4000 6259 4600 2249 3600
+test.dasm (line 389): [0x0650]                      0F08 7F00 2745 3900 3E49 3200 6119 0700
+test.dasm (line 389): [0x0658]                      3649 3600 2649 3E00 0024 0000 4024 0000
+test.dasm (line 389): [0x0660]                      0814 2200 1414 1400 2214 0800 0259 0600
+test.dasm (line 389): [0x0668]                      3E59 5E00 7E09 7E00 7F49 3600 3E41 2200
+test.dasm (line 389): [0x0670]                      7F41 3E00 7F49 4100 7F09 0100 3E41 7A00
+test.dasm (line 389): [0x0678]                      7F08 7F00 417F 4100 2040 3F00 7F08 7700
+test.dasm (line 389): [0x0680]                      7F40 4000 7F06 7F00 7F01 7E00 3E41 3E00
+test.dasm (line 389): [0x0688]                      7F09 0600 3E61 7E00 7F09 7600 2649 3200
+test.dasm (line 389): [0x0690]                      017F 0100 3F40 7F00 1F60 1F00 7F30 7F00
+test.dasm (line 389): [0x0698]                      7708 7700 0778 0700 7149 4700 007F 4100
+test.dasm (line 389): [0x06A0]                      031C 6000 417F 0000 0201 0200 8080 8000
+test.dasm (line 389): [0x06A8]                      0001 0200 2454 7800 7F44 3800 3844 2800
+test.dasm (line 389): [0x06B0]                      3844 7F00 3854 5800 087E 0900 4854 3C00
+test.dasm (line 389): [0x06B8]                      7F04 7800 047D 0000 2040 3D00 7F10 6C00
+test.dasm (line 389): [0x06C0]                      017F 0000 7C18 7C00 7C04 7800 3844 3800
+test.dasm (line 389): [0x06C8]                      7C14 0800 0814 7C00 7C04 0800 4854 2400
+test.dasm (line 389): [0x06D0]                      043E 4400 3C40 7C00 1C60 1C00 7C30 7C00
+test.dasm (line 389): [0x06D8]                      6C10 6C00 4C50 3C00 6454 4C00 0836 4100
+test.dasm (line 389): [0x06E0]                      0077 0000 4136 0800 0201 0201 0205 0200
+test.dasm (line 390): [0x06E8]               actual_font:
+test.dasm (line 391): [0x06E8]                 .reserve 512
+test.dasm (line 391): [0x06E8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x06F0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x06F8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0700]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0708]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0710]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0718]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0720]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0728]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0730]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0738]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0740]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0748]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0750]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0758]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0760]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0768]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0770]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0778]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0780]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0788]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0790]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0798]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07A0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07A8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07B0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07B8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07C0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07C8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07D0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07D8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07E0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07E8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07F0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x07F8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0800]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0808]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0810]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0818]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0820]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0828]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0830]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0838]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0840]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0848]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0850]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0858]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0860]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0868]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0870]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0878]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0880]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0888]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0890]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x0898]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08A0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08A8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08B0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08B8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08C0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08C8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08D0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08D8]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 391): [0x08E0]                      0000 0000 0000 0000 0000 0000 0000 0000
+test.dasm (line 392): [0x08E8]               test_character:
+test.dasm (line 393): [0x08E8]                 .dat 0b00000111_00000010
+test.dasm (line 393): [0x08E8]                      40E0
+test.dasm (line 394): [0x08E9]                 .dat 0b00000000_00000010
+test.dasm (line 394): [0x08E9]                      4000
